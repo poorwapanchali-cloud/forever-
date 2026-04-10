@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For chuti Baba ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    overflow:hidden;
+    color:white;
+}
+
+/* 🌄 BACKGROUND */
+.bg {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("photo1.jpg") center/cover no-repeat;
+    filter:blur(18px) brightness(0.4);
+    transform:scale(1.1);
+    z-index:-2;
+}
+
+/* 🌙 OVERLAY */
+.overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle, rgba(255,77,109,0.25), rgba(0,0,0,0.9));
+    z-index:-1;
+}
+
+/* CENTER BOX */
+.box {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    padding:30px;
+    max-width:500px;
+    background: rgba(255,255,255,0.08);
+    border-radius:25px;
+    backdrop-filter: blur(20px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* BUTTON */
+button {
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff4d6d,#ff758c);
+    color:white;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+/* ❤️ HEART RAIN */
+.heart {
+    position:fixed;
+    top:-10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity:0;
+    }
+}
+
+/* 💍 POPUP */
+#popup {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.popup-box {
+    background: rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:25px;
+}
+
+/* 🎆 FIREWORK */
+.firework {
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:#ff4d6d;
+    border-radius:50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    to {
+        transform: translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- 🌙 FIRST SLIDE -->
+<div class="box" id="slide1">
+    <h2>I have something in my heart... ❤️</h2>
+    <button onclick="showMessage()">See what’s in my heart 💌</button>
+</div>
+
+<!-- 💌 MESSAGE -->
+<div class="box" id="slide2" style="display:none;">
+    <h2>For My Baba ❤️</h2>
+    <p id="text"></p>
+    <button onclick="showFinal()">One last thing... 💞</button>
+</div>
+
+<!-- 💍 FINAL POPUP -->
+<div id="popup">
+    <div class="popup-box">
+        <h2>Will you stay with me forever? ( tho hitiye nathn marnawa eka nisa yes kiypng )💍❤️</h2>
+        <button onclick="fireworks()">Yes 😍</button>
+    </div>
+</div>
+
+<script>
+
+/* ❤️ HEART RAIN */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+
+    let icons=["❤️","💖","💘","💕"];
+    h.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*20+10)+"px";
+    h.style.animationDuration=(Math.random()*3+3)+"s";
+
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},150);
+
+/* SHOW MESSAGE */
+function showMessage(){
+    document.getElementById("slide1").style.display="none";
+    let s2=document.getElementById("slide2");
+    s2.style.display="block";
+    typeText();
+}
+
+/* TYPE TEXT */
+let msg="From the moment we started talking on Facebook 💙,\n\nmy life slowly became more beautiful because of you 🥺\n\nYou are my happiness, my peace, my everything ❤️\n\nNo matter what happens, I will always choose you MN GODAAAAAAAKK ADAREEEEEIIII 💕";
+
+let i=0;
+
+function typeText(){
+    if(i<msg.length){
+        document.getElementById("text").innerHTML+=msg.charAt(i);
+        i++;
+        setTimeout(typeText,35);
+    }
+}
+
+/* FINAL */
+function showFinal(){
+    document.getElementById("popup").style.display="flex";
+}
+
+/* 🎆 FIREWORK */
+function fireworks(){
+    for(let i=0;i<60;i++){
+        let f=document.createElement("div");
+        f.className="firework";
+
+        let x=(Math.random()-0.5)*400+"px";
+        let y=(Math.random()-0.5)*400+"px";
+
+        f.style.setProperty("--x",x);
+        f.style.setProperty("--y",y);
+        f.style.left="50%";
+        f.style.top="50%";
+
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    }
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
